@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Authentication.Login"
+    android:orientation="vertical">
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="wrap_content"
+        android:text="Traininfo"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:background="#FFC300"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/_10ssp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="wrap_content"
+        android:text="We make your train journey as easy as possible"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="viewStart"
+        />
+    <ImageView
+        android:layout_marginLeft="@dimen/_25sdp"
+        android:layout_marginRight="@dimen/_25sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:src="@drawable/train" />
+    <ImageButton
+
+        />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20sdp"
+        android:hint="email"
+        style="?attr/textInputFilledStyle"
+        app:endIconDrawable=""
+        app:endIconContentDescription=""
+        app:endIconMode="clear_text">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20sdp"
+        android:hint="password"
+        style="?attr/textInputFilledStyle"
+        app:endIconDrawable=""
+        app:endIconContentDescription=""
+        app:endIconMode="clear_text">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="wrap_content"
+        app:style="@style/Widget.Material3.Button.Icon"
+        app:icon=""/>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
