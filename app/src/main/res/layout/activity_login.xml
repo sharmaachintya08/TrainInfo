@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Authentication.Login"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp">
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="@dimen/_70sdp"
         android:layout_height="wrap_content"
@@ -14,60 +15,99 @@
         android:textStyle="bold"
         android:background="#FFC300"
         android:textAlignment="viewStart"
-        android:textSize="@dimen/_10ssp"/>
+        android:textSize="@dimen/_10ssp"
+        android:layout_margin="@dimen/_5sdp"/>
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="@dimen/_250sdp"
         android:layout_height="wrap_content"
         android:text="We make your train journey as easy as possible"
-        android:textSize="@dimen/_15ssp"
+        android:textSize="@dimen/_16ssp"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textAlignment="viewStart"
+        android:layout_margin="@dimen/_5sdp"
         />
     <ImageView
-        android:layout_marginLeft="@dimen/_25sdp"
-        android:layout_marginRight="@dimen/_25sdp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp"
-        android:src="@drawable/train" />
-    <ImageButton
+        android:src="@drawable/train"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/_5sdp"/>
 
-        />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/google_image_background_shape"
+        android:contentDescription="google signin"
+        android:src="@drawable/googleicon" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_20sdp"
-        android:hint="email"
-        style="?attr/textInputFilledStyle"
-        app:endIconDrawable=""
-        app:endIconContentDescription=""
-        app:endIconMode="clear_text">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_20sdp"
-        android:hint="password"
-        style="?attr/textInputFilledStyle"
-        app:endIconDrawable=""
-        app:endIconContentDescription=""
-        app:endIconMode="clear_text">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <Button
-        android:layout_width="@dimen/_80sdp"
         android:layout_height="wrap_content"
-        app:style="@style/Widget.Material3.Button.Icon"
-        app:icon=""/>
+        android:hint="Email"
+        style="?attr/textInputFilledStyle"
+        app:endIconDrawable="@drawable/mailicon"
+        app:endIconContentDescription="mail icon"
+        app:endIconMode="custom"
+        android:textColorHint="@color/black"
+        app:boxCornerRadiusBottomEnd="50dp"
+        app:boxCornerRadiusBottomStart="50dp"
+        app:boxCornerRadiusTopEnd="50dp"
+        app:boxCornerRadiusTopStart="50dp"
+        app:boxStrokeColor="@color/black"
+        android:layout_margin="@dimen/_3sdp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:background="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        style="?attr/textInputFilledStyle"
+        app:endIconDrawable="@drawable/passwordicon"
+        app:endIconContentDescription="mail icon"
+        app:endIconMode="custom"
+        android:textColorHint="@color/black"
+        app:boxCornerRadiusBottomEnd="50dp"
+        app:boxCornerRadiusBottomStart="50dp"
+        app:boxCornerRadiusTopEnd="50dp"
+        app:boxCornerRadiusTopStart="50dp"
+        app:boxStrokeColor="@color/black"
+        android:layout_margin="@dimen/_3sdp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:background="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="@dimen/_10ssp"
+        android:padding="@dimen/_10sdp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/black"
+        app:cornerRadius="50dp"
+        android:layout_margin="@dimen/_3sdp"/>
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="ForgotPassword?"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/_2sdp"/>
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Signup"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/_1sdp"/>
 </LinearLayout>
