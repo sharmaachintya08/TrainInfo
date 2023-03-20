@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Authentication.Login"
     android:orientation="vertical"
-    android:padding="@dimen/_10sdp">
+    android:padding="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_19sdp">
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="@dimen/_70sdp"
         android:layout_height="wrap_content"
@@ -27,18 +28,11 @@
         android:textAlignment="viewStart"
         android:layout_margin="@dimen/_5sdp"
         />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
-        android:src="@drawable/train"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/_5sdp"/>
-
     <androidx.appcompat.widget.AppCompatImageButton
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/_5sdp"
+        android:layout_margin="@dimen/_32sdp"
         android:background="@drawable/google_image_background_shape"
         android:contentDescription="google signin"
         android:src="@drawable/googleicon" />
@@ -56,7 +50,7 @@
         app:boxCornerRadiusTopEnd="50dp"
         app:boxCornerRadiusTopStart="50dp"
         app:boxStrokeColor="@color/black"
-        android:layout_margin="@dimen/_3sdp">
+        android:layout_margin="@dimen/_10sdp">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,7 +71,28 @@
         app:boxCornerRadiusTopEnd="50dp"
         app:boxCornerRadiusTopStart="50dp"
         app:boxStrokeColor="@color/black"
-        android:layout_margin="@dimen/_3sdp">
+        android:layout_margin="@dimen/_10sdp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:background="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ConfirmPassword"
+        style="?attr/textInputFilledStyle"
+        app:endIconDrawable="@drawable/passwordicon"
+        app:endIconContentDescription="mail icon"
+        app:endIconMode="custom"
+        android:textColorHint="@color/black"
+        app:boxCornerRadiusBottomEnd="50dp"
+        app:boxCornerRadiusBottomStart="50dp"
+        app:boxCornerRadiusTopEnd="50dp"
+        app:boxCornerRadiusTopStart="50dp"
+        app:boxStrokeColor="@color/black"
+        android:layout_margin="@dimen/_10sdp">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,27 +102,19 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="@dimen/_200sdp"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Signup"
         android:textSize="@dimen/_10ssp"
         android:padding="@dimen/_10sdp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/black"
         app:cornerRadius="50dp"
-        android:layout_margin="@dimen/_3sdp"/>
+        android:layout_margin="@dimen/_10sdp"/>
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ForgotPassword?"
+        android:text="Login"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/_2sdp"/>
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Signup"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/_1sdp"/>
 </LinearLayout>
