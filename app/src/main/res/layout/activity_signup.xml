@@ -29,6 +29,7 @@
         android:layout_margin="@dimen/_5sdp"
         />
     <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/googleauthenticationbutton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
@@ -52,6 +53,7 @@
         app:boxStrokeColor="@color/black"
         android:layout_margin="@dimen/_10sdp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailedittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
@@ -73,6 +75,7 @@
         app:boxStrokeColor="@color/black"
         android:layout_margin="@dimen/_10sdp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordedittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
@@ -94,12 +97,14 @@
         app:boxStrokeColor="@color/black"
         android:layout_margin="@dimen/_10sdp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmpasswordedittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:background="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/signupbutton"
         android:layout_width="@dimen/_200sdp"
         android:layout_height="wrap_content"
         android:text="Signup"
@@ -110,6 +115,7 @@
         app:cornerRadius="50dp"
         android:layout_margin="@dimen/_10sdp"/>
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/logintextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
