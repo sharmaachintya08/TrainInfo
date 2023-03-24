@@ -48,4 +48,8 @@ dependencies {
 
     //material design
     implementation 'com.google.android.material:material:1.8.0'
+
+    //fragment
+    def fragment_version = "1.5.6"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
 }

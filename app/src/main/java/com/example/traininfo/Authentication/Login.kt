@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageButton
 import com.example.traininfo.R
+import com.example.traininfo.Station.StationDetailHolder
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
@@ -27,6 +28,7 @@ class Login : AppCompatActivity() {
 
         initViews()
         openSignupActivity()
+        openStationDetailHolderActivity()
     }
     private fun initViews(){
         googleAuthenticationButton = findViewById(R.id.googleauthenticationbutton)
@@ -39,6 +41,12 @@ class Login : AppCompatActivity() {
     private fun openSignupActivity(){
         signupButton.setOnClickListener(View.OnClickListener {view ->
             openActivity = Intent(this@Login,Signup::class.java)
+            startActivity(openActivity)
+        })
+    }
+    private fun openStationDetailHolderActivity(){
+        loginButton.setOnClickListener(View.OnClickListener { view ->
+            openActivity = Intent(this@Login,StationDetailHolder::class.java)
             startActivity(openActivity)
         })
     }
