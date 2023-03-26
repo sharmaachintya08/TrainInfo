@@ -11,6 +11,7 @@
         android:orientation="horizontal"
         android:layout_margin="@dimen/_10sdp">
         <ImageView
+            android:id="@+id/backbuttonimageview"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:src="@drawable/back"
@@ -35,6 +36,7 @@
         android:background="@drawable/station_block"
         android:padding="@dimen/_5sdp">
         <TextView
+            android:id="@+id/startingStationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="start"
@@ -52,6 +54,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"/>
         <TextView
+            android:id="@+id/destinationstationtextview"
             android:textAlignment="center"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -64,6 +67,7 @@
             android:padding="@dimen/_5sdp"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/traindetailsrecyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_10sdp"/>
