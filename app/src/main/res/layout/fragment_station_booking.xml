@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:padding="@dimen/_13sdp">
     <TextView
+        android:id="@+id/currentlocationtextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="current location"
@@ -53,6 +54,7 @@
                 android:layout_weight="1"
                 android:textColorHint="@color/black">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/startingstationedittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/destination_location"
@@ -68,6 +70,7 @@
                 android:layout_weight="1"
                 android:textColorHint="@color/black">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/destinationedittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/destination_location"
@@ -85,6 +88,7 @@
             android:padding="3dp"/>
     </LinearLayout>
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/proceedmaterialbutton"
         android:layout_width="@dimen/_200sdp"
         android:layout_height="wrap_content"
         android:text="Proceed"
