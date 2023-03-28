@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "889759826820",
+    "project_id": "traininfo-e7823",
+    "storage_bucket": "traininfo-e7823.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889759826820:android:ac8f42fc63c9151b7753d1",
+        "android_client_info": {
+          "package_name": "com.example.traininfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889759826820-3k2gbjpi7mog704k4hifgukd4s48v8no.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeh07S8MuvebiZZIUWOY8xrjqDDf_Reos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889759826820-3k2gbjpi7mog704k4hifgukd4s48v8no.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
