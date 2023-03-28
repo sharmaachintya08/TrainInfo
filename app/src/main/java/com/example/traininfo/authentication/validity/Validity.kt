@@ -28,6 +28,10 @@ class Validity(private val context : Context) {
             Toast.makeText(context,"email format not correct",Toast.LENGTH_SHORT).show()
             return false
         }
+        if(!password.trim().equals(confirmPassword.trim())){
+            Toast.makeText(context,"Password does not match",Toast.LENGTH_SHORT).show()
+            return false
+        }
         return true
     }
 }
