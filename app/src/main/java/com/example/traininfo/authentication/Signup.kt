@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageButton
 import com.example.traininfo.R
+import com.example.traininfo.authentication.validity.Validity
+import com.example.traininfo.station.StationDetailHolder
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
@@ -36,7 +38,7 @@ class Signup : AppCompatActivity() {
     }
     private fun openLoginActivity(){
         loginButton.setOnClickListener(View.OnClickListener {view ->
-            openActivity = Intent(this@Signup,Login::class.java)
+            openActivity = Intent(this@Signup, Login::class.java)
             startActivity(openActivity)
         })
     }
