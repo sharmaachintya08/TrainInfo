@@ -1,5 +1,6 @@
 package com.example.traininfo.Station.StationDetails.TrainDetailsItems
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,6 @@ class TrainDetailItem(private val detailItemList : ArrayList<TrainDetailData>) :
     }
 
     override fun onBindViewHolder(holder: TrainDetailItemInnerClass, position: Int) {
-        holder.destinationStation_TextView.setText(detailItemList.get(position).toString())
+        holder.destinationStation_TextView.setText(detailItemList.get(position).destination_station)
     }
 }

@@ -31,11 +31,12 @@ class TrainDetails : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews(view)
+        implementRecyclerView()
     }
     private fun initViews(view : View){
         backButtonImageView = view.findViewById(R.id.backbuttonimageview)
         startingStationTextView = view.findViewById(R.id.startingStationTextView)
-        destinationStationTextView = view.findViewById(R.id.destinationedittext)
+        destinationStationTextView = view.findViewById(R.id.destinationstationtextview)
         trainDetailRecyclerView = view.findViewById(R.id.traindetailsrecyclerview)
     }
     private fun createDummyData() : ArrayList<TrainDetailData>{
