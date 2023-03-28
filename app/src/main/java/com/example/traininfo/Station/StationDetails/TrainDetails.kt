@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.traininfo.R
+import com.example.traininfo.Station.StationDetails.TrainDetailData.TrainDetailData
 import com.example.traininfo.Station.StationDetails.TrainDetailsItems.TrainDetailItem
 
 
@@ -39,9 +38,14 @@ class TrainDetails : Fragment() {
         destinationStationTextView = view.findViewById(R.id.destinationedittext)
         trainDetailRecyclerView = view.findViewById(R.id.traindetailsrecyclerview)
     }
+    private fun createDummyData() : ArrayList<TrainDetailData>{
+        val trainList = ArrayList<TrainDetailData>()
+        trainList.add(TrainDetailData(1,"",4,"express","121AC","Delhi","9:45","6:00:00","bangalore","6:45"))
+        return trainList
+    }
     private fun implementRecyclerView(){
         trainDetailRecyclerView.layoutManager = LinearLayoutManager(context)
         //add arraylist here
-        trainDetailRecyclerView.adapter = TrainDetailItem()
+        trainDetailRecyclerView.adapter = TrainDetailItem(createDummyData())
     }
 }

@@ -1,6 +1,6 @@
 package com.example.traininfo.Station.StationDetails.TrainDetailData
 
-data class TrainDetailItemData(
+data class TrainDetailData(
     val train_item_id : Number,
     val image : String?,
     val rating : Number?,

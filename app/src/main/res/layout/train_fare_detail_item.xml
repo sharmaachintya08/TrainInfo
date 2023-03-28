@@ -17,6 +17,7 @@
         android:layout_margin="@dimen/_2sdp">
 
         <ImageView
+            android:id="@+id/train_logo_imageview"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
             android:layout_gravity="center_vertical"
@@ -31,6 +32,7 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/_2sdp">
             <RatingBar
+                android:id="@+id/train_ratingbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Widget.AppCompat.RatingBar.Small"
@@ -39,6 +41,7 @@
                 android:stepSize="0.5"
                 android:contentDescription="ratingbar" />
             <TextView
+                android:id="@+id/train_name_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SNCF"
@@ -46,6 +49,7 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textSize="@dimen/_10ssp"/>
             <TextView
+                android:id="@+id/train_seattype_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2+2 Seater A/C"
@@ -54,6 +58,7 @@
                 android:textSize="@dimen/_7ssp"/>
         </LinearLayout>
         <TextView
+            android:id="@+id/train_fare_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -77,6 +82,7 @@
             android:orientation="vertical"
             android:layout_margin="@dimen/_2sdp">
             <TextView
+                android:id="@+id/train_startingstation_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="London"
@@ -84,6 +90,7 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textSize="@dimen/_10ssp"/>
             <TextView
+                android:id="@+id/train_startingstation_time_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3:30PM"
@@ -92,6 +99,7 @@
                 android:textSize="@dimen/_7ssp"/>
         </LinearLayout>
         <TextView
+            android:id="@+id/train_journeytime_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="6h 54m"
@@ -110,6 +118,7 @@
             android:layout_margin="@dimen/_2sdp">
 
             <TextView
+                android:id="@+id/train_destinationstaton_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-medium"
@@ -119,6 +128,7 @@
                 android:textSize="@dimen/_10ssp" />
 
             <TextView
+                android:id="@+id/train_destinationstaton_time_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="9:30PM"
