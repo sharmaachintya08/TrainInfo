@@ -1,4 +1,4 @@
-package com.example.traininfo.Station.StationDetails.TrainDetailData
+package com.example.traininfo.station.StationDetails.TrainDetailData
 
 data class TrainDetailData(
     val train_item_id : Number,

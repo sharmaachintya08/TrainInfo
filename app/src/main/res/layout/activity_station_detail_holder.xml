@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Station.StationDetailHolder">
+    tools:context=".station.StationDetailHolder">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
@@ -14,6 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:name="com.example.traininfo.Station.StationDetails.StationBooking"
+        android:name="com.example.traininfo.station.StationDetails.StationBooking"
         tools:layout="@layout/fragment_station_booking" />
 </androidx.constraintlayout.widget.ConstraintLayout>

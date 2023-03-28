@@ -12,13 +12,13 @@
         android:theme="@style/Theme.TrainInfo"
         tools:targetApi="31">
         <activity
-            android:name=".Station.StationDetailHolder"
+            android:name=".station.StationDetailHolder"
             android:exported="false" />
         <activity
-            android:name=".Authentication.Signup"
+            android:name=".authentication.Signup"
             android:exported="false" />
         <activity
-            android:name=".Authentication.Login"
+            android:name=".authentication.Login"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

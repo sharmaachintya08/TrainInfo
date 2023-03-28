@@ -1,7 +1,6 @@
-package com.example.traininfo.Station.StationDetails
+package com.example.traininfo.station.StationDetails
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View

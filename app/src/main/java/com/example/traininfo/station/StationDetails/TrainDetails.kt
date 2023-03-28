@@ -1,4 +1,4 @@
-package com.example.traininfo.Station.StationDetails
+package com.example.traininfo.station.StationDetails
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traininfo.R
-import com.example.traininfo.Station.StationDetails.TrainDetailData.TrainDetailData
-import com.example.traininfo.Station.StationDetails.TrainDetailsItems.TrainDetailItem
+import com.example.traininfo.station.StationDetails.TrainDetailData.TrainDetailData
+import com.example.traininfo.station.StationDetails.TrainDetailsItems.TrainDetailItem
 
 
 class TrainDetails : Fragment() {

@@ -1,10 +1,9 @@
-package com.example.traininfo.Authentication
+package com.example.traininfo.authentication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
 import com.example.traininfo.R
 import com.google.android.material.button.MaterialButton

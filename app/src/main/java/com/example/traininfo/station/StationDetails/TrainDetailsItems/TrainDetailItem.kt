@@ -1,6 +1,5 @@
-package com.example.traininfo.Station.StationDetails.TrainDetailsItems
+package com.example.traininfo.station.StationDetails.TrainDetailsItems
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traininfo.R
-import com.example.traininfo.Station.StationDetails.TrainDetailData.TrainDetailData
+import com.example.traininfo.station.StationDetails.TrainDetailData.TrainDetailData
 
 class TrainDetailItem(private val detailItemList : ArrayList<TrainDetailData>) : RecyclerView.Adapter<TrainDetailItem.TrainDetailItemInnerClass>() {
     inner class TrainDetailItemInnerClass(itemView: View) : RecyclerView.ViewHolder(itemView) {
