@@ -13,6 +13,10 @@ import com.example.traininfo.station.StationDetailHolder
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -26,10 +30,12 @@ class Signup : AppCompatActivity() {
 
     private lateinit var openActivity : Intent
 
-    private val db = Firebase.firestore
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+
+        auth = Firebase.auth
 
         initViews()
         openLoginActivity()
@@ -55,34 +61,14 @@ class Signup : AppCompatActivity() {
         val password = passwordEditText.editableText
         val confirmPassword = confirmPasswordEditText.editableText
         signupButton.setOnClickListener(View.OnClickListener {view ->
-            if(Validity(applicationContext).checkFormat("$email","$password","$confirmPassword")){
-
-                //if the user is already present in the database login
-                db.collection("users")
-                    .whereEqualTo("email","$email")
-                    .whereEqualTo("password","$password")
-                    .get()
-                    .addOnSuccessListener {
-                        Toast.makeText(applicationContext,"Account present, please login",Toast.LENGTH_SHORT).show()
-                        openActivity = Intent(this@Signup, Login::class.java)
+            if(Validity(applicationContext).checkFormatForUserAuthentication("$email","$password","$confirmPassword")){
+                auth.createUserWithEmailAndPassword("$email","$password")
+                    .addOnSuccessListener {dc ->
+                        openActivity = Intent(this@Signup, StationDetailHolder::class.java)
                         startActivity(openActivity)
                     }
-                    .addOnFailureListener{exception ->
-                        Log.w("firestore", "Error getting documents: ", exception)
-                    }
-
-
-                //if user is not found in the database add the details to firestore
-                val users = hashMapOf(
-                    "email" to "$email",
-                    "password" to "$password"
-                )
-                db.collection("users")
-                    .add(users)
-                    .addOnSuccessListener {dc ->
-                        Log.d("firestore","DocumentSnapshot added with ID: ${dc.id}")
-                    }
                     .addOnFailureListener{e ->
+                        Toast.makeText(this@Signup,"${e.message}",Toast.LENGTH_SHORT).show()
                         Log.w("firestore","Error adding document",e)
                     }
             }
