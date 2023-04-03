@@ -99,15 +99,6 @@
         app:cornerRadius="50dp"
         android:layout_margin="@dimen/_3sdp"/>
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/forgotpasswordtextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ForgotPassword?"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/_2sdp"/>
-    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/signuptextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -115,5 +106,5 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/_1sdp"/>
+        android:layout_margin="@dimen/_2sdp"/>
 </LinearLayout>

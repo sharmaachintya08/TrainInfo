@@ -22,7 +22,6 @@ class Login : AppCompatActivity() {
     private lateinit var emailForAuthentication : TextInputEditText
     private lateinit var passwordForAuthentication : TextInputEditText
     private lateinit var loginButton : MaterialButton
-    private lateinit var forgotPasswordButton : MaterialTextView
     private lateinit var signupButton : MaterialTextView
 
     private lateinit var openActivity : Intent
@@ -43,7 +42,6 @@ class Login : AppCompatActivity() {
         emailForAuthentication = findViewById(R.id.emailedittext)
         passwordForAuthentication = findViewById(R.id.passwordedittext)
         loginButton  = findViewById(R.id.loginbutton)
-        forgotPasswordButton = findViewById(R.id.forgotpasswordtextview)
         signupButton = findViewById(R.id.signuptextview)
     }
     private fun openSignupActivity(){
