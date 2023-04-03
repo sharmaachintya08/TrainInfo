@@ -28,7 +28,7 @@
         android:textAlignment="viewStart"
         android:layout_margin="@dimen/_5sdp"
         />
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageButton
         android:id="@+id/googleauthenticationbutton"
         android:layout_width="48dp"
         android:layout_height="48dp"
