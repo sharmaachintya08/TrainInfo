@@ -42,6 +42,7 @@ class Login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     private val google_req_code : Int = 123
+    private lateinit var  completedTask : Task<GoogleSignInAccount>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -117,22 +118,23 @@ class Login : AppCompatActivity() {
     }
     private fun handleResult(completedTask : Task<GoogleSignInAccount>){
         try{
-            if(getGoogleSignInAccount(completedTask) != null) UpdateUI(completedTask)
+            this.completedTask = completedTask
+            if(getGoogleSignInAccount() != null) UpdateUI()
         }catch(e : Exception){
             Toast.makeText(this,e.toString(),Toast.LENGTH_SHORT).show()
         }
     }
-    private fun getGoogleSignInAccount(completedTask: Task<GoogleSignInAccount>) : GoogleSignInAccount{
+    private fun getGoogleSignInAccount() : GoogleSignInAccount{
         return completedTask.getResult(ApiException::class.java)
     }
-    private fun UpdateUI(completedTask: Task<GoogleSignInAccount>) {
-        signInWithCredentials(completedTask)
+    private fun UpdateUI() {
+        signInWithCredentials()
     }
-    private fun getCredentials(completedTask: Task<GoogleSignInAccount>): AuthCredential {
-        return GoogleAuthProvider.getCredential(getGoogleSignInAccount(completedTask).idToken, null)
+    private fun getCredentials(): AuthCredential {
+        return GoogleAuthProvider.getCredential(getGoogleSignInAccount().idToken, null)
     }
-    private fun  signInWithCredentials(completedTask: Task<GoogleSignInAccount>){
-        auth.signInWithCredential(getCredentials(completedTask)).addOnCompleteListener { task ->
+    private fun  signInWithCredentials(){
+        auth.signInWithCredential(getCredentials()).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val intent = Intent(this, StationDetailHolder::class.java)
                 startActivity(intent)
@@ -142,7 +144,7 @@ class Login : AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
-        if (GoogleSignIn.getLastSignedInAccount(this) != null) {
+        if (ifLastSignedInAccountIsNotNull()) {
             startActivity(
                 Intent(
                     this, StationDetailHolder
@@ -151,5 +153,8 @@ class Login : AppCompatActivity() {
             )
             finish()
         }
+    }
+    private fun ifLastSignedInAccountIsNotNull() : Boolean{
+        return GoogleSignIn.getLastSignedInAccount(this) != null
     }
 }
