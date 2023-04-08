@@ -28,7 +28,7 @@ class RESTTrainData {
             Log.d(TAG, networkRequest.toString())
         }
     }
-    suspend fun doNetworkRequest(): Response {
+    suspend fun doNetworkRequest() : Response{
         val client = OkHttpClient()
         val request = Request.Builder()
             .url("https://indian-railway-irctc.p.rapidapi.com/getTrainId?trainno=1205")
@@ -36,6 +36,7 @@ class RESTTrainData {
             .addHeader("X-RapidAPI-Key", "2b52c313b2msh26a780c5132d231p13a985jsne54b2cb597e7")
             .addHeader("X-RapidAPI-Host", "indian-railway-irctc.p.rapidapi.com")
             .build()
-        return client.newCall(request).execute()
+        val response = client.newCall(request).execute()
+        return response
     }
 }
