@@ -2,18 +2,18 @@ package com.example.traininfo.station.StationDetails.TrainDetailData.REST
 
 import android.content.Context
 import android.util.Log
-import com.android.volley.AuthFailureError
-import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.traininfo.station.StationDetails.TrainDetailData.REST.stationcodes.StationCodes
 
 class RESTTrainData(val context : Context) {
     private var TAG = "networkrequest"
     private lateinit var startingStation : String
     private lateinit var desintationStation : String
     private lateinit var currentDate : String
+
+
     fun setStartingStation(station : String){
         startingStation = station
     }
@@ -23,6 +23,18 @@ class RESTTrainData(val context : Context) {
     fun setCurrentDate(date : String){
         currentDate = date
     }
+    fun getStartingStationCode() : String? {
+        val stationCodes = enumValues<StationCodes>().find { it ->
+            it.name == startingStation
+        }
+        return stationCodes?.stationCode
+    }
+    fun getDestinationStationCode() : String? {
+        val stationCodes = enumValues<StationCodes>().find { it ->
+            it.name == desintationStation
+        }
+        return stationCodes?.stationCode
+    }
     fun getTrainData(){
         try {
             doNetworkRequest()
@@ -31,7 +43,7 @@ class RESTTrainData(val context : Context) {
         }
     }
     fun doNetworkRequest(){
-        val url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=BVI&toStationCode=NDLS&dateOfJourney=%3CREQUIRED%3E"
+        val url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=${getStartingStationCode()}&toStationCode=${getDestinationStationCode()}&dateOfJourney=${currentDate}"
         val request = object : JsonObjectRequest(Method.GET, url, null, Response.Listener { response ->
             // Handle successful response
             val message = response.toString()
