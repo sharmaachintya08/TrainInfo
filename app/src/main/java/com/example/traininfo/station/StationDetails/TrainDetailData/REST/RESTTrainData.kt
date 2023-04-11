@@ -2,6 +2,7 @@ package com.example.traininfo.station.StationDetails.TrainDetailData.REST
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -40,6 +41,7 @@ class RESTTrainData(val context : Context) {
             doNetworkRequest()
         }catch (e : Exception) {
             Log.d(TAG,"exception : ${e}")
+            ErrorToast()
         }
     }
     fun doNetworkRequest(){
@@ -52,6 +54,7 @@ class RESTTrainData(val context : Context) {
             // Handle error response
             val errorMessage = error.localizedMessage
             Log.e(TAG, "Error: $errorMessage")
+            ErrorToast()
         }) {
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String, String>()
@@ -61,5 +64,10 @@ class RESTTrainData(val context : Context) {
             }
         }
         Volley.newRequestQueue(context).add(request)
+    }
+
+    private fun ErrorToast() {
+        Toast.makeText(context,"Some Problem Occured, No Trains Found For the selected Region !",Toast.LENGTH_SHORT)
+            .show()
     }
 }
