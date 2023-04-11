@@ -31,11 +31,13 @@ class StationBooking : Fragment() {
     private lateinit var proceedButton : MaterialButton
 
     lateinit var fusedLocationProviderClient : FusedLocationProviderClient
+
+    private lateinit var thiscontext : Context
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        thiscontext = container!!.context
         return inflater.inflate(R.layout.fragment_station_booking, container, false)
     }
 
@@ -102,7 +104,7 @@ class StationBooking : Fragment() {
         return ActivityCompat.requestPermissions(requireActivity(),arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION,android.Manifest.permission.ACCESS_COARSE_LOCATION),101)
     }
     private fun doNetworkCall(){
-        val test = RESTTrainData()
+        val test = RESTTrainData(thiscontext)
         test.getTrainData()
     }
 }
