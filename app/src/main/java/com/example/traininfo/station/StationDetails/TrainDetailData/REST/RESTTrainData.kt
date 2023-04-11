@@ -21,21 +21,25 @@ class RESTTrainData(val context : Context) {
     fun setDestinationStation(station : String){
         desintationStation = station
     }
+
     fun setCurrentDate(date : String){
         currentDate = date
     }
+
     fun getStartingStationCode() : String? {
         val stationCodes = enumValues<StationCodes>().find { it ->
             it.name == startingStation
         }
         return stationCodes?.stationCode
     }
+
     fun getDestinationStationCode() : String? {
         val stationCodes = enumValues<StationCodes>().find { it ->
             it.name == desintationStation
         }
         return stationCodes?.stationCode
     }
+
     fun getTrainData(){
         try {
             doNetworkRequest()
@@ -44,6 +48,7 @@ class RESTTrainData(val context : Context) {
             ErrorToast()
         }
     }
+
     fun doNetworkRequest(){
         val url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=${getStartingStationCode()}&toStationCode=${getDestinationStationCode()}&dateOfJourney=${currentDate}"
         val request = object : JsonObjectRequest(Method.GET, url, null, Response.Listener { response ->
