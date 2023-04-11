@@ -31,7 +31,7 @@ class RESTTrainData(val context : Context) {
         }
     }
     fun doNetworkRequest(){
-        val url = "https://irctc1.p.rapidapi.com/api/v1/searchStation?query=BJU"
+        val url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=BVI&toStationCode=NDLS&dateOfJourney=%3CREQUIRED%3E"
         val request = object : JsonObjectRequest(Method.GET, url, null, Response.Listener { response ->
             // Handle successful response
             val message = response.toString()
