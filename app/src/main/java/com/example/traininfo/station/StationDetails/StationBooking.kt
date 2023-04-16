@@ -105,12 +105,11 @@ class StationBooking : Fragment() {
     private fun getRequestPermissions(){
         return ActivityCompat.requestPermissions(requireActivity(),arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION,android.Manifest.permission.ACCESS_COARSE_LOCATION),101)
     }
-    @RequiresApi(Build.VERSION_CODES.O)
+
     private fun doNetworkCall(){
         val test = RESTTrainData(thiscontext)
         test.setStartingStation("${startingStationEditText.text}")
         test.setDestinationStation("${destinationEditText.text}")
-        test.setCurrentDate("${LocalDate.now()}")
         test.getTrainData()
     }
 }
