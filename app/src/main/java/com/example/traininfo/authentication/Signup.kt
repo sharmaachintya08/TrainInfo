@@ -62,7 +62,6 @@ class Signup : AppCompatActivity() {
         signupButton = findViewById(R.id.signupbutton)
         loginButton = findViewById(R.id.logintextview)
     }
-    //function starting with open will open some activity
     private fun openLoginActivity(){
         loginButton.setOnClickListener(View.OnClickListener {view ->
             openActivity = Intent(this@Signup, Login::class.java)

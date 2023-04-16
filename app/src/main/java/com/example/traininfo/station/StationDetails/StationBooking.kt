@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -21,6 +22,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import java.time.LocalDate
 import java.util.*
 
 
@@ -103,8 +105,12 @@ class StationBooking : Fragment() {
     private fun getRequestPermissions(){
         return ActivityCompat.requestPermissions(requireActivity(),arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION,android.Manifest.permission.ACCESS_COARSE_LOCATION),101)
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun doNetworkCall(){
         val test = RESTTrainData(thiscontext)
+        test.setStartingStation("${startingStationEditText.text}")
+        test.setDestinationStation("${destinationEditText.text}")
+        test.setCurrentDate("${LocalDate.now()}")
         test.getTrainData()
     }
 }
