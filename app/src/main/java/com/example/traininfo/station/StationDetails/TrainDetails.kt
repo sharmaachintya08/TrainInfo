@@ -52,47 +52,6 @@ class TrainDetails : Fragment() {
         trainDetailRecyclerView = view.findViewById(R.id.traindetailsrecyclerview)
     }
     private fun NetworkRequestAndSettingUpAdapter(){
-        /*val requestQueue = Volley.newRequestQueue(context)
-        val url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=BVI&toStationCode=NDLS&dateOfJourney=2023-04-18" // Replace with your JSON URL
-
-        val jsonRequest = JsonObjectRequest(Request.Method.GET, url, null,
-            { response ->
-                // JSON data fetched successfully
-                val items = ArrayList<TrainDetailData>()
-
-                // Loop through all keys in the JSON response
-                val keys = response.keys()
-                while (keys.hasNext()) {
-                    val key = keys.next()
-
-                    // Check if the value associated with the key is a JSON array
-                    if (response.get(key) is JSONArray) {
-                        val jsonArray = response.getJSONArray(key)
-                        for (i in 0 until jsonArray.length()) {
-                            val jsonObject = jsonArray.getJSONObject(i)
-                            val trainItemId = jsonObject.getInt("train_number")
-                            val trainName = jsonObject.getString("train_name")
-                            val starting_station = jsonObject.getString("from_station_name")
-                            val timeToStart = jsonObject.getString("from_sta")
-                            val travelTime = jsonObject.getString("duration")
-                            val destination_station = jsonObject.getString("to_station_name")
-                            val timeToReach = jsonObject.getString("to_sta")
-                            val item = TrainDetailData (trainItemId,trainName,starting_station,timeToStart,travelTime,destination_station,timeToReach)
-                            items.add(item)
-                        }
-                    }
-                }
-
-                // Set up RecyclerView with the fetched data
-                val recyclerView = trainDetailRecyclerView
-                recyclerView.layoutManager = LinearLayoutManager(context)
-                recyclerView.adapter = TrainDetailItem(items)
-            },
-            { error ->
-                // Error occurred while fetching JSON data
-                Toast.makeText(context, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
-            })
-        requestQueue.add(jsonRequest)*/
 
         val requestQueue = Volley.newRequestQueue(context)
         val url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=BVI&toStationCode=NDLS&dateOfJourney=2023-04-18" // Replace with your JSON URL
