@@ -18,11 +18,14 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.traininfo.R
-import com.example.traininfo.station.StationDetails.TrainDetailData.REST.stationcodes.StationNamesToCodesConversion
+import com.example.traininfo.station.StationDetails.TrainDetailData.REST.stationcodes.StationCodes
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class StationBooking : Fragment() {
@@ -60,23 +63,37 @@ class StationBooking : Fragment() {
     private fun proceedToNextFragment(){
         proceedButton.setOnClickListener(View.OnClickListener {view ->
             if(startingStationEditText.text!!.isNotEmpty() && destinationEditText.text!!.isNotEmpty()) {
-                Log.d("check","check")
                 setStationData()
-                //replacingFragmentOnButtonClick()
             }
         })
     }
-    private fun replacingFragmentOnButtonClick() {
-            fragmentManager?.commit {
-                replace<TrainDetails>(R.id.fragment_container_view)
-                setReorderingAllowed(true)
-                addToBackStack(null)
-            }
-    }
     private fun setStationData() {
-        val stationData = StationNamesToCodesConversion()
-        stationData.setStartingStation("${startingStationEditText.text}")
-        stationData.setDestinationStation("${destinationEditText.text}")
+        try {
+            val bundle = Bundle()
+            val startingStation = "${startingStationEditText.text}".toUpperCase()
+            val startingStationCode = StationCodes.valueOf(startingStation).stationCode
+            val destination = "${destinationEditText.text}".toUpperCase()
+            val destinationCode = StationCodes.valueOf(destination).stationCode
+            bundle.putString("startingStation",startingStation)
+            bundle.putString("destinationStation",destination)
+            bundle.putString("startingStationCode", startingStationCode)
+            bundle.putString("destinationCode", destinationCode)
+            val trainDetailsFragment = TrainDetails()
+            trainDetailsFragment.arguments = bundle
+            replacingFragmentOnButtonClick(trainDetailsFragment)
+        }catch(e : Exception) {
+            Toast.makeText(
+                context,e.message,Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+    private fun replacingFragmentOnButtonClick(fragment : Fragment) {
+        fragmentManager?.commit {
+            replace(R.id.fragment_container_view,fragment)
+            setReorderingAllowed(true)
+            addToBackStack(null)
+        }
+        fragmentManager?.executePendingTransactions()
     }
     private fun getLocation(){
         fusedLocationProviderClient = getFusedLocationProviderClientInstance()

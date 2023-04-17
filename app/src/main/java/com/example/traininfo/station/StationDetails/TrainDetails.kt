@@ -1,7 +1,12 @@
 package com.example.traininfo.station.StationDetails
 
+import android.app.ProgressDialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +14,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.NetworkResponse
@@ -23,6 +31,9 @@ import com.example.traininfo.station.StationDetails.TrainDetailsItems.TrainDetai
 import org.json.JSONArray
 import org.json.JSONObject
 import java.nio.charset.Charset
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.TemporalQueries.localDate
 
 
 class TrainDetails : Fragment() {
@@ -31,6 +42,10 @@ class TrainDetails : Fragment() {
     private lateinit var destinationStationTextView : TextView
     private lateinit var trainDetailRecyclerView : RecyclerView
     private lateinit var context : Context
+    private lateinit var startingStationCode : String
+    private lateinit var destinationStationCode : String
+    private lateinit var startingStation : String
+    private lateinit var destination : String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,10 +55,25 @@ class TrainDetails : Fragment() {
         return inflater.inflate(R.layout.fragment_train_details, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onViewCreateUtil(view)
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun onViewCreateUtil(view : View) {
+        setStartingAndDestinationCodes()
         initViews(view)
+        setStartingAndDestinationStations()
+        BackButtonHandler()
         NetworkRequestAndSettingUpAdapter()
+    }
+
+    private fun setStartingAndDestinationCodes() {
+        startingStationCode = arguments?.getString("startingStationCode").toString()
+        destinationStationCode = arguments?.getString("destinationCode").toString()
+        startingStation = arguments?.getString("startingStation").toString()
+        destination = arguments?.getString("destinationStation").toString()
     }
     private fun initViews(view : View){
         backButtonImageView = view.findViewById(R.id.backbuttonimageview)
@@ -51,10 +81,35 @@ class TrainDetails : Fragment() {
         destinationStationTextView = view.findViewById(R.id.destinationstationtextview)
         trainDetailRecyclerView = view.findViewById(R.id.traindetailsrecyclerview)
     }
-    private fun NetworkRequestAndSettingUpAdapter(){
+    private fun setStartingAndDestinationStations() {
+        startingStationTextView.setText(startingStation)
+        destinationStationTextView.setText(destination)
+    }
+    private fun BackButtonHandler() {
+        backButtonImageView.setOnClickListener(View.OnClickListener {
+            parentFragmentManager.commit {
+                replace<StationBooking>(R.id.fragment_container_view)
+                setReorderingAllowed(true)
+                addToBackStack(null)
+            }
+        })
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun NetworkRequestAndSettingUpAdapter(){
+
+        val progressDialog = ProgressDialog(context)
+        progressDialog.show()
+        progressDialog.setCancelable(false)
+        progressDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val inflater = LayoutInflater.from(context)
+        val dialogView: View = inflater.inflate(R.layout.progress_dialog_layout, null)
+        progressDialog.setContentView(dialogView)
 
         val requestQueue = Volley.newRequestQueue(context)
-        val url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=BVI&toStationCode=NDLS&dateOfJourney=2023-04-18" // Replace with your JSON URL
+        val currentDate = LocalDate.now()
+        val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") // Specify the desired date format
+        val currentDateStr = currentDate.format(dateFormatter)
+        val url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=${startingStationCode}&toStationCode=${destinationStationCode}&dateOfJourney=${currentDateStr}"
 
         val jsonRequest = object : JsonObjectRequest(Method.GET, url, null,
             { response ->
@@ -88,10 +143,12 @@ class TrainDetails : Fragment() {
                 val recyclerView = trainDetailRecyclerView
                 recyclerView.layoutManager = LinearLayoutManager(context)
                 recyclerView.adapter = TrainDetailItem(items)
+                progressDialog.dismiss()
             },
             { error ->
                 // Error occurred while fetching JSON data
                 Toast.makeText(context, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+                progressDialog.dismiss()
             }) {
             // Override the parseNetworkResponse() method to handle the response manually
             override fun parseNetworkResponse(response: NetworkResponse?): Response<JSONObject> {
