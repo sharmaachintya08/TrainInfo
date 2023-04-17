@@ -8,6 +8,12 @@ This Application provides the list of available Trains and various other informa
 4. Checkout the list of available trains and other details, from station1 to station2. 
 5. If want to change the states, click on the back button and change the starting or destination state.
 
+**Libraries used**
+1. Volley for network requests
+2. Fragments
+3. RapidAPI - irctc api
+4. Firebase Authentication including Google authentication
+5. Location API to get the device's locatio
 
 **working video**
 
