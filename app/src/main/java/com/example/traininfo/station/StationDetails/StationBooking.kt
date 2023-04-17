@@ -3,6 +3,7 @@ package com.example.traininfo.station.StationDetails
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -21,8 +22,6 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
-import java.time.LocalDate
-import java.util.*
 
 
 class StationBooking : Fragment() {
@@ -72,8 +71,11 @@ class StationBooking : Fragment() {
         checkLocationPermission()
         task.addOnSuccessListener {
             if(it != null){
-                Log.d("location","${it.latitude} ${it.longitude}")
-                Toast.makeText(context,"${it.latitude} ${it.longitude}",Toast.LENGTH_LONG).show()
+                val addressList = Geocoder(thiscontext).getFromLocation(it.latitude,it.longitude,1)
+                if(addressList!!.isNotEmpty()){
+                    val address = addressList[0]
+                    val state = address.adminArea
+                }
             }
         }
         task.addOnFailureListener{
