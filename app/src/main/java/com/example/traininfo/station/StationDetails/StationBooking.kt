@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.traininfo.R
+import com.example.traininfo.station.StationDetails.TrainDetailData.REST.stationcodes.StationNamesToCodesConversion
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.button.MaterialButton
@@ -58,12 +59,24 @@ class StationBooking : Fragment() {
     }
     private fun proceedToNextFragment(){
         proceedButton.setOnClickListener(View.OnClickListener {view ->
+            if(startingStationEditText.text!!.isNotEmpty() && destinationEditText.text!!.isNotEmpty()) {
+                Log.d("check","check")
+                setStationData()
+                //replacingFragmentOnButtonClick()
+            }
+        })
+    }
+    private fun replacingFragmentOnButtonClick() {
             fragmentManager?.commit {
                 replace<TrainDetails>(R.id.fragment_container_view)
                 setReorderingAllowed(true)
                 addToBackStack(null)
             }
-        })
+    }
+    private fun setStationData() {
+        val stationData = StationNamesToCodesConversion()
+        stationData.setStartingStation("${startingStationEditText.text}")
+        stationData.setDestinationStation("${destinationEditText.text}")
     }
     private fun getLocation(){
         fusedLocationProviderClient = getFusedLocationProviderClientInstance()
@@ -75,6 +88,8 @@ class StationBooking : Fragment() {
                 if(addressList!!.isNotEmpty()){
                     val address = addressList[0]
                     val state = address.adminArea
+                    currentLocationTextView.setText(state)
+                    startingStationEditText.setText(state)
                 }
             }
         }
