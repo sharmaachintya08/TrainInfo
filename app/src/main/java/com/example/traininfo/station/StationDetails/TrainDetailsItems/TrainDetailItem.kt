@@ -49,6 +49,11 @@ class TrainDetailItem(private val detailItemList : ArrayList<TrainDetailData>) :
     }
 
     override fun onBindViewHolder(holder: TrainDetailItemInnerClass, position: Int) {
+        holder.name_TextView.setText(detailItemList.get(position).train_name)
+        holder.startingStation_TextView.setText(detailItemList.get(position).starting_station)
+        holder.startingStationTime_TextView.setText(detailItemList.get(position).time_to_start)
+        holder.journeyTime_TextView.setText(detailItemList.get(position).travel_time)
         holder.destinationStation_TextView.setText(detailItemList.get(position).destination_station)
+        holder.destinationStationTime_TextView.setText(detailItemList.get(position).time_to_reach)
     }
 }
