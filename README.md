@@ -13,7 +13,7 @@ This Application provides the list of available Trains and various other informa
 2. Fragments
 3. RapidAPI - irctc api
 4. Firebase Authentication including Google authentication
-5. Location API to get the device's locatio
+5. Location API to get the device's location
 
 **working video**
 
