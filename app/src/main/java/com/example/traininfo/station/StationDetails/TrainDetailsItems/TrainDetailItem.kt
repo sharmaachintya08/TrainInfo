@@ -12,8 +12,6 @@ import com.example.traininfo.station.StationDetails.TrainDetailData.TrainDetailD
 
 class TrainDetailItem(private val detailItemList : ArrayList<TrainDetailData>) : RecyclerView.Adapter<TrainDetailItem.TrainDetailItemInnerClass>() {
     inner class TrainDetailItemInnerClass(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val logo_ImageView : ImageView
-        val ratingBar : RatingBar
         val name_TextView : TextView
         val seatType_TextView : TextView
         val fare_TextView : TextView
@@ -24,8 +22,6 @@ class TrainDetailItem(private val detailItemList : ArrayList<TrainDetailData>) :
         val destinationStationTime_TextView : TextView
         init{
             //give views their layout object
-            logo_ImageView = itemView.findViewById(R.id.train_logo_imageview)
-            ratingBar = itemView.findViewById(R.id.train_ratingbar)
             name_TextView = itemView.findViewById(R.id.train_name_textview)
             seatType_TextView = itemView.findViewById(R.id.train_seattype_textview)
             fare_TextView = itemView.findViewById(R.id.train_fare_textview)
