@@ -51,7 +51,6 @@ class TrainDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         context = container!!.context
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_train_details, container, false)
     }
 
@@ -107,21 +106,17 @@ class TrainDetails : Fragment() {
 
         val requestQueue = Volley.newRequestQueue(context)
         val currentDate = LocalDate.now()
-        val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") // Specify the desired date format
+        val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val currentDateStr = currentDate.format(dateFormatter)
-        val url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=${startingStationCode}&toStationCode=${destinationStationCode}&dateOfJourney=${currentDateStr}"
+        val url = "YOUR API URL"
 
         val jsonRequest = object : JsonObjectRequest(Method.GET, url, null,
             { response ->
-                // JSON data fetched successfully
                 val items = ArrayList<TrainDetailData>()
 
-                // Loop through all keys in the JSON response
                 val keys = response.keys()
                 while (keys.hasNext()) {
                     val key = keys.next()
-
-                    // Check if the value associated with the key is a JSON array
                     if (response.get(key) is JSONArray) {
                         val jsonArray = response.getJSONArray(key)
                         for (i in 0 until jsonArray.length()) {
@@ -139,28 +134,23 @@ class TrainDetails : Fragment() {
                     }
                 }
 
-                // Set up RecyclerView with the fetched data
                 val recyclerView = trainDetailRecyclerView
                 recyclerView.layoutManager = LinearLayoutManager(context)
                 recyclerView.adapter = TrainDetailItem(items)
                 progressDialog.dismiss()
             },
             { error ->
-                // Error occurred while fetching JSON data
                 Toast.makeText(context, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
                 progressDialog.dismiss()
             }) {
-            // Override the parseNetworkResponse() method to handle the response manually
             override fun parseNetworkResponse(response: NetworkResponse?): Response<JSONObject> {
                 val jsonString = String(response?.data ?: ByteArray(0), Charset.forName(
                     HttpHeaderParser.parseCharset(response?.headers)))
                 return Response.success(JSONObject(jsonString), HttpHeaderParser.parseCacheHeaders(response))
             }
-
-            // Override the getHeaders() method to include headers for authentication or authorization
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String, String>()
-                headers["X-RapidAPI-Key"] = "2b52c313b2msh26a780c5132d231p13a985jsne54b2cb597e7" // Replace with your RapidAPI key
+                headers["X-RapidAPI-Key"] = "YOUR API KEY"
                 headers["X-RapidAPI-Host"] = "irctc1.p.rapidapi.com"
                 return headers
             }
