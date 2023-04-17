@@ -2,10 +2,7 @@ package com.example.traininfo.station.StationDetails.TrainDetailData
 
 data class TrainDetailData(
     val train_item_id : Number,
-    val image : String?,
-    val rating : Number?,
     val train_name : String,
-    val seat_type : String,
     val starting_station : String,
     val time_to_start : String,
     val travel_time : String,

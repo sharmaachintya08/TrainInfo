@@ -17,7 +17,6 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.traininfo.R
-import com.example.traininfo.station.StationDetails.TrainDetailData.REST.RESTTrainData
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.button.MaterialButton
@@ -51,7 +50,6 @@ class StationBooking : Fragment() {
         initViews(view)
         getLocation()
         proceedToNextFragment()
-        doNetworkCall()
     }
     private fun initViews(view : View){
         currentLocationTextView = view.findViewById(R.id.currentlocationtextview)
@@ -104,12 +102,5 @@ class StationBooking : Fragment() {
     }
     private fun getRequestPermissions(){
         return ActivityCompat.requestPermissions(requireActivity(),arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION,android.Manifest.permission.ACCESS_COARSE_LOCATION),101)
-    }
-
-    private fun doNetworkCall(){
-        val test = RESTTrainData(thiscontext)
-        test.setStartingStation("${startingStationEditText.text}")
-        test.setDestinationStation("${destinationEditText.text}")
-        test.getTrainData()
     }
 }
