@@ -3,8 +3,6 @@ package com.example.traininfo.station.StationDetails.TrainDetailsItems
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traininfo.R
